@@ -6,7 +6,8 @@ import pickle
 pickle_in = open("decision.pkl","rb")
 classifier=pickle.load(pickle_in)
 pickle_in.close()
-
+#message
+#abhinav    
 pickle_pca= open("finalized_pca_model.sav","rb")
 classifier_pca=pickle.load(pickle_pca)
 pickle_pca.close()
@@ -44,4 +45,7 @@ if __name__=='__main__':
     age=st.number_input("Age")
     if st.button("Predict"):
         result=predictdiabetes(nooftimespregnant,glucoselevel,bloodpressure,skinthickness,insulin,bmi,diabetespedigreefunction,age)
-        st.success("The output is {}".format(result))
+        if result==1:
+            st.success("You are diabetic")
+        if result==0:
+            st.success("You are not diabetic")
